@@ -1,6 +1,10 @@
 <resources>
     <string name="app_name">Enerjoy Meter App</string>
-    <string name="adres_klant">adres klant</string>
-    <string name="klant">naam klant</string>
-    <string name="meterwaarde">meterwaarde</string>
+    <string name="login_email">E-mail</string>
+    <string name="login_password">Wachtwoord</string>
+    <string name="login_button">Aanmelden</string>
+    <string name="email_klant">Email</string>
+    <string name="next_button">Volgende</string>
+    <string name="meterwaarde">Meterwaarde</string>
+    <string name="button">Indienen</string>
 </resources>
