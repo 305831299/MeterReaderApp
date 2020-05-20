@@ -89,12 +89,10 @@ public class MainActivity extends AppCompatActivity {
             JSONObject JObj = null;
             JSONObject JObj2 = null;
             JSONArray JArray = null;
+            TextView end = findViewById(R.id.endText);
 
             try {
                 JObj = new JSONObject(data);
-
-                TextView end = findViewById(R.id.endText);
-                end.setText(JObj.toString());
 
                 try {
                     if (JObj.get("success").toString() == "true")

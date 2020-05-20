@@ -19,6 +19,17 @@
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/icon_name" />
 
+    <TextView
+        android:id="@+id/meters_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/meters"
+        android:layout_marginTop="50dp"
+        android:layout_marginStart="75dp"
+        android:layout_marginLeft="75dp"
+        app:layout_constraintBottom_toTopOf="@id/radio_group"
+        app:layout_constraintStart_toStartOf="parent"/>
+
     <RadioGroup
         android:id="@+id/radio_group"
         android:layout_width="200dp"
@@ -31,6 +42,17 @@
         android:layout_marginLeft="75dp">
 
     </RadioGroup>
+
+    <TextView
+        android:id="@+id/meter_value_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/meterwaarde"
+        android:layout_marginTop="50dp"
+        android:layout_marginStart="75dp"
+        android:layout_marginLeft="75dp"
+        app:layout_constraintBottom_toTopOf="@id/meter_value"
+        app:layout_constraintStart_toStartOf="parent"/>
 
     <EditText
         android:id="@+id/meter_value"
@@ -62,7 +84,7 @@
         android:layout_marginStart="75dp"
         android:layout_marginLeft="75dp"
         android:layout_marginTop="50dp"
-        android:text="@string/button"
+        android:text="@string/send_button"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/thirdText" />
 
@@ -72,7 +94,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="50dp"
         android:layout_marginLeft="50dp"
-        android:text="@string/next_button"
+        android:text="@string/back_button"
         app:layout_constraintStart_toEndOf="@id/sendButton"
         app:layout_constraintTop_toTopOf="@+id/sendButton" />
 

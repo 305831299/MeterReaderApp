@@ -7,4 +7,7 @@
     <string name="next_button">Volgende</string>
     <string name="meterwaarde">Meterwaarde</string>
     <string name="button">Indienen</string>
+    <string name="back_button">Terug</string>
+    <string name="send_button">Upload</string>
+    <string name="meters">Meters</string>
 </resources>

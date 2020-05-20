@@ -158,7 +158,7 @@ public class ThirdActivity extends AppCompatActivity {
                         }
                     }
                     else {
-                        end.setText("Failed to Login");
+                        end.setText("Failed to Communicate with API");
                     }
                 } catch (JSONException e) {
                     e.printStackTrace();
@@ -195,6 +195,3 @@ public class ThirdActivity extends AppCompatActivity {
         }
     }
 }
-
-
-// https://jsonblob.com/68081770-9775-11ea-a2b9-6d9f8f865edb
