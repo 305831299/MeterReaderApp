@@ -3,6 +3,7 @@ package com.example.meterreaderapp;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.TargetApi;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Build;
@@ -22,8 +23,11 @@ import org.json.JSONObject;
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.time.LocalDateTime;
 
 public class ThirdActivity extends AppCompatActivity {
+
+    @TargetApi(26)
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,14 +36,18 @@ public class ThirdActivity extends AppCompatActivity {
 
         final TextView end = findViewById(R.id.thirdText);
         Button submit = findViewById(R.id.sendButton);
+        final Button back = findViewById(R.id.backCustomerButton);
         final RadioGroup radioG = findViewById(R.id.radio_group);
         final EditText meter_val = findViewById(R.id.meter_value);
         String token = null;
+        String email = null;
+
+        back.setVisibility(View.GONE);
 
         Intent intent = getIntent();
         if(intent.hasExtra(Intent.EXTRA_TEXT) == true) {
             token = intent.getStringExtra(Intent.EXTRA_TITLE);
-            String email = intent.getStringExtra(Intent.EXTRA_TEXT);
+            email = intent.getStringExtra(Intent.EXTRA_TEXT);
         }
 
         final String finalToken = token;
@@ -52,34 +60,48 @@ public class ThirdActivity extends AppCompatActivity {
                 end.setText(radioB.getText().toString() + " " + radioID);
 
                 // -- JUST HERE FOR TEST PURPOSE
-                String urlString = "";
+                //String urlString = "";
 
                 // -- API URL BUILDER
-                /*
-                String apiCall_1 = "TO BE CHANGED";
-                String apiCall_2 = "TO BE CHANGED";
-                String apiCall_3 = "TO BE CHANGED";
-                String keyArray[] = new String[]{"Id", "meter"};
-                String valueArray[] = new String[]{radioID, meter_val.getText().toString()};
-                String urlString = NetworkUtils.buildUrl(apiCall_1, apiCall_2, apiCall_3, keyArray, valueArray);
-                */
+
+                LocalDateTime time = LocalDateTime.now();
+                String apiCall_1 = "meters";
+                String apiCall_2 = "usage";
+                String apiCall_3 = "add";
+                String keyArray[] = new String[]{"meter_Id", "meterReading", "readDate"};
+                String valueArray[] = new String[]{radioID.toString(), meter_val.getText().toString(), time.toString()};
+                String urlString = NetworkUtils.buildUrlString(apiCall_1, apiCall_2, apiCall_3, keyArray, valueArray);
+
 
                 new setMeterData().execute(urlString, finalToken);
+
+                end.setText("Meter Data Uploaded");
+                back.setVisibility(View.VISIBLE);
+                meter_val.setText("");
+            }
+        });
+
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent backIntent = new Intent(ThirdActivity.this, SecondActivity.class);
+                backIntent.putExtra(Intent.EXTRA_TEXT, finalToken);
+                startActivity(backIntent);
             }
         });
 
         // -- API URL BUILDER
-        /*
+
         String apiCall_1 = "meters";
         String apiCall_2 = "connection";
         String apiCall_3 = "search";
         String keyArray[] = new String[]{"email"};
         String valueArray[] = new String[]{email};
-        String urlString = NetworkUtils.buildUrl(apiCall_1, apiCall_2, apiCall_3, keyArray, valueArray);
-        */
+        String urlString = NetworkUtils.buildUrlString(apiCall_1, apiCall_2, apiCall_3, keyArray, valueArray);
+
 
         // -- Temporary url json file
-        String urlString = "https://jsonblob.com/api/jsonBlob/68081770-9775-11ea-a2b9-6d9f8f865edb";
+        //String urlString = "https://jsonblob.com/api/jsonBlob/68081770-9775-11ea-a2b9-6d9f8f865edb";
 
         new getMeterCustomerApi().execute(urlString, token);
     }

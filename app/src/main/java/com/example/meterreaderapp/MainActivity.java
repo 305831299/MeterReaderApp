@@ -46,14 +46,14 @@ public class MainActivity extends AppCompatActivity {
 
 
                 // -- API URL BUILDER
-                /*
+
                 String keyArray[] = new String[]{"email", "password"};
                 String valueArray[] = new String[]{val_1.getText().toString(), val_2.getText().toString()};
-                String urlString = NetworkUtils.buildUrl(apiCall_1, apiCall_2, apiCall_3 keyArray, valueArray);
-                */
+                String urlString = NetworkUtils.buildUrlString(apiCall_1, apiCall_2, apiCall_3, keyArray, valueArray);
+
 
                 // -- Temporary url json file
-                String urlString = "https://jsonblob.com/api/jsonBlob/320771f0-975e-11ea-a2b9-5fea71c1f242";
+                //String urlString = "https://jsonblob.com/api/jsonBlob/320771f0-975e-11ea-a2b9-5fea71c1f242";
 
                 new loginApi().execute(urlString, "");
             }

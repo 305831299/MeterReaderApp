@@ -30,7 +30,7 @@ public class SecondActivity extends AppCompatActivity {
         TextView end = findViewById(R.id.secondText);
         final TextView hidden = findViewById(R.id.hidden);
         final TextView hidden_2 = findViewById(R.id.hidden_2);
-        EditText emailK = findViewById(R.id.email);
+        final EditText emailK = findViewById(R.id.email);
 
         next.setVisibility(View.GONE);
 
@@ -44,17 +44,17 @@ public class SecondActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 // -- API URL BUILDER
-                /*
+
                 String apiCall_1 = "customers";
                 String apiCall_2 = "showOne";
                 String apiCall_3 = "";
                 String keyArray[] = new String[]{"email"};
                 String valueArray[] = new String[]{emailK.getText().toString()};
                 String urlString = NetworkUtils.buildUrlString(apiCall_1, apiCall_2, apiCall_3, keyArray, valueArray);
-                */
+
 
                 // -- Temporary url json file
-                String urlString = "https://jsonblob.com/api/jsonBlob/ce772bff-976c-11ea-a2b9-3739443e3526";
+                //String urlString = "https://jsonblob.com/api/jsonBlob/ce772bff-976c-11ea-a2b9-3739443e3526";
 
                 String token = hidden.getText().toString();
                 new getCustomerApi().execute(urlString, token);
@@ -122,7 +122,7 @@ public class SecondActivity extends AppCompatActivity {
 
                         end.setText("Name : " + "\n\t" + JObjData.get("first").toString() + " " +JObjData.get("last").toString() + "\n" +
                                 "E-mail : " + "\n\t" + JObjData.get("email").toString() + "\n" +
-                                "Address : " + JObjAddress.get("street").toString() + " " + JObjAddress.get("number") + "\n\t" +
+                                "Address : " + "\n\t" + JObjAddress.get("street").toString() + " " + JObjAddress.get("number") + "\n\t" +
                                 JObjCity.get("postalcode") + " " + JObjCity.get("name") + "\n\t" +
                                 JObjCountry.get("name"));
 
